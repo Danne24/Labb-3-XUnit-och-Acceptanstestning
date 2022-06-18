@@ -88,8 +88,27 @@ namespace Labb_3___XUnit_och_Acceptanstestning
                         this.Num1 = UseOldResultOrInputNewNumber();
 
                         Console.Clear();
-                        Console.WriteLine("Please make a choice.");
-                        this.Num2 = UseOldResultOrInputNewNumber();
+                        bool loop2 = true;
+                        while (loop2 == true)
+                        {
+                            Console.WriteLine("Please make a choice.");
+                            this.Num2 = UseOldResultOrInputNewNumber();
+                            if (this.Num2 == 0)
+                            {
+                                try
+                                {
+                                    throw new Exception();
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Error: You can not divide a number by zero! Try again!");
+                                }
+                            }
+                            else
+                            {
+                                loop2 = false;
+                            }
+                        }
 
                         Division();
                         Console.Clear();
@@ -209,7 +228,7 @@ namespace Labb_3___XUnit_och_Acceptanstestning
 
         public void DisplayResult(string symbol)
         {
-            Console.WriteLine($"{this.Num1} {symbol} {this.Num2} = {this.Sum}.");
+            Console.WriteLine($"{this.Num1} {symbol} {this.Num2} = {this.Sum}");
 
             ListOfCalculatorHistory.Add(new CalculatorHistory
             {
